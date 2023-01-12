@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+#define mod 100000007;
+using namespace std;
+
+bool armstrongNumber(int x)
+{
+  // calculating number of digits and making a copy of input
+  int copy = x;
+  int length = to_string(x).length();
+  int result = 0;
+  // calculating pow of digit to number of digits in
+  // input
+  while (copy > 0)
+  {
+    int temp = copy % 10;
+    result = (result) + (pow(temp, length));
+    copy = copy / 10;
+  }
+  // if result is same as input, then return true;
+  if (result == x)
+  {
+    return true;
+  }
+  return false;
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Check if number is armstrong
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+ Armstrong Numbers are the numbers having the
+ sum of digits raised to power no. of digits
+ is equal to a given number.
+ Examples- 0, 1, 153, 370, 371, 407, and 1634
+ are some of the Armstrong Numbers.
+
+ we will calculate the number of digits of int
+ by converting into string and calculating its length.
+ for every digit we will call pow(digit,length of string)
+ and add it to result in the end we will compare it to
+ input. if same return true, else false
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int x;
+  cin >> x;
+  int result = armstrongNumber(x);
+  string res = (result == 0) ? "false" : "true";
+  cout << res;
+
+  return 0;
+}

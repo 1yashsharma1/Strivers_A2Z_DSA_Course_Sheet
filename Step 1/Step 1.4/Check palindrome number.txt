@@ -1,0 +1,77 @@
+#include <bits/stdc++.h>
+#define mod 100000007;
+using namespace std;
+
+bool isPalindrome(int x)
+{
+  // converting the int to string
+  string palindrome = to_string(x);
+  // initializing start & end pointer
+  int i = 0;
+  int j = palindrome.length() - 1;
+  // we will compare until both elements come to
+  // same place
+  while (j > i)
+  {
+    // if elements are not same return false
+    if (palindrome[i] != palindrome[j])
+    {
+      return 0;
+    }
+    i++;
+    j--;
+  }
+  // if we traverse successful then return true
+  return 1;
+}
+
+int main()
+{
+  /*
+  Ques Link:https://leetcode.com/problems/reverse-integer/
+  Check palindrome number Leetcode 9
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  we have to check if an integer is palindrome for that
+  we will first convert the integer into the string and
+  after that we will make two pointer first pointing to
+  0th index and second pointing to last index, we will compare
+  both the elements on these elements and we will increment the
+  first pointer and decrease the last pointer after each
+  iteration if at any point the elements are not same we will
+  return false otherwise if whole traversel is complete then
+  we will return true;
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int x;
+  cin >> x;
+  int result = isPalindrome(x);
+  string res = (result == 0) ? "false" : "true";
+  cout << res;
+
+  return 0;
+}

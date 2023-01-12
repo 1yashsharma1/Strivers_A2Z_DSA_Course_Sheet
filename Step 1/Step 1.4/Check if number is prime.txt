@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+#define mod 100000007;
+using namespace std;
+
+bool isPrime(int x)
+{
+  // if input is 0 or 1 it is not prime
+  if (x == 0 || x == 1)
+  {
+    return false;
+  }
+  // if any number divides it in {2,sqrt(x)} range
+  // that means it is not prime
+  for (int i = 2; i < sqrt(x); i++)
+  {
+    if (x % i == 0)
+    {
+      return false;
+    }
+  }
+  // if we reached here that means the number is prime
+  return true;
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Check if number is prime
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  if number is 0 or 1 then it is not prime return false;
+  for prime number we have to check if any number divides it
+  in {2,sqrt(n)} range.
+  if there is no number that completely divides the input in this range
+  then we return true, otherwise false.
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int x;
+  cin >> x;
+  int result = isPrime(x);
+  string res = (result == 0) ? "false" : "true";
+  cout << res;
+
+  return 0;
+}
