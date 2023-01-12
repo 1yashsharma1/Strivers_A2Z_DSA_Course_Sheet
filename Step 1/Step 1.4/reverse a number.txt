@@ -1,0 +1,73 @@
+#include <bits/stdc++.h>
+#define mod 100000007;
+using namespace std;
+
+int reverse(int x)
+{
+  // result will store the reversed number
+  int result = 0;
+  // temp always store the last digit in the number
+  int temp = 0;
+  while (x != 0)
+  {
+    temp = x % 10;
+    // before adding the result we will check if the
+    // number is less than INT_MIN and greater than INT_MAX
+    if (result < INT_MIN / 10 || result > INT_MAX / 10)
+    {
+      return 0;
+    }
+    result += temp + (result * 10);
+    x = x / 10;
+  }
+  return result;
+}
+
+int main()
+{
+  /*
+  Ques Link:https://leetcode.com/problems/reverse-integer/
+  Reverse an Integer Leetcode 7
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  to reverse any number we take out the last digit of that number
+  we take result, for each iteration we add the last digit to
+  result after multiplying 10 with the result. In this case
+  it is possible that the input can be greater than INT_MAX or
+  less than INT_MIN, in this case for every iteration we will
+  check for this by using below condition
+
+  if(result<INT_MIN/10||result>INT_MAX/10) return 0;
+
+  else result=temp+(result*10);
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  int x;
+  cin >> x;
+  int result = reverse(x);
+  cout << result;
+
+  return 0;
+}
