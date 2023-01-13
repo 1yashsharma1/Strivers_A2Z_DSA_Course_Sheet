@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+int gcd(int a, int b)
+{
+  // if b is zero, largest number is divided completely
+  // then we will return the corresponding number to that
+  if (b == 0)
+  {
+    return a;
+  }
+  // do a recursion until one of the number becomes zero
+  return gcd(b, a % b);
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Find GCD or HCF of two numbers
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  we have to find the largest number which divides both numbers
+  completely.
+  we are using Euclidean’s theorem to find the HCF/GCD
+  we will use recursion and check for the largest number which
+  divides both number completely.
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int a, b;
+  cin >> a >> b;
+
+  int result = gcd(a, b);
+  cout << result;
+
+  return 0;
+}

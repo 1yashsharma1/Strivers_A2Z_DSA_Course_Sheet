@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+void nTimes(int n)
+{
+  // if n becomes 0, stop the recursion
+  if (n == 0)
+  {
+    return;
+  }
+  // print Hello
+  cout << "Hello" << endl;
+  // recursively call function and decrease the value by 1
+  nTimes(--n);
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Recursion by print something N times
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  we have to print HELLO n times using recursion.
+  recursively call the function n times until base case
+  is reached, for every call decrease the value of n by 1.
+  when n becomes 0, return (stop recursion).
+
+  ?METHOD 2
+
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int n;
+  cin >> n;
+  // print Hello n times
+  nTimes(n);
+
+  return 0;
+}
