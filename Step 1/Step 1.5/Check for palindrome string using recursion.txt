@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+#define ull unsigned long long
+using namespace std;
+
+bool palindromeString(string s, int start, int end)
+{
+  // this will return false, if string is not palindrome
+  if (s[start] != s[end])
+  {
+    return false;
+  }
+  // we successfully traversed the whole string without returning
+  // anything, that means it is palindrome
+  if (start >= false)
+  {
+    return true;
+  }
+  // recursive call to check and traverse the whole string
+  return palindromeString(s, start + 1, end - 1);
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Check for palindrome string using recursion
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  we initilalize the palindromeString function start=0,end=lengthOfString-1
+  if str[start]!=str[end], we will return false
+  if start>=end, that means string is palindrome otherwise we would
+  have returned false
+  after this we have to return the recursive function call with start+1,end-1
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  string s;
+  cin >> s;
+  string result = (palindromeString(s, 0, s.length() - 1) == 1) ? "true" : "false";
+  cout << result;
+  return 0;
+}

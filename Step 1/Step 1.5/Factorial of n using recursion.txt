@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+#define ull unsigned long long
+using namespace std;
+
+ull factOfN(int n)
+{ // if n==1 or n==0 because if we return 0, then it
+  // will make the whole answer zero
+  if (n == 1 || n == 0)
+  {
+    return 1;
+  }
+  // since factorial(n) is n*(n-1)!, we are doing a recursive call
+  return n * factOfN(n - 1);
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Factorial of n using recursion
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  We will check if we have reached n==0 or n==1, then we will return 1
+  otherwise we will return the n multiplied by recursive call of function(n-1)
+  i.e. return n*factOfN(n-1);
+
+  ?METHOD 2
+
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int n;
+  cin >> n;
+  // print factorial n
+  ull result = factOfN(n);
+  cout << result;
+
+  return 0;
+}

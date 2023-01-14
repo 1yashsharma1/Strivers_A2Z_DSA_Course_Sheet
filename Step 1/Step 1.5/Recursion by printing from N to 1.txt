@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+void printUntilOne(int n)
+{
+  // if n is 0, then return back
+  if (n == 0)
+  {
+    return;
+  }
+  // decrease the value of n by 1, for every call
+  // and print the value of n
+  cout << n << endl;
+  printUntilOne(n - 1);
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Recursion by printing from N to 1
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  Everytime we make a recursion call we will decrease the valued
+  of n by 1, if n==0 then we will return. Before making the call
+  we will print the value of n
+
+  ?METHOD 2
+
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int n;
+  cin >> n;
+  // print n to 1
+  printUntilOne(n);
+
+  return 0;
+}

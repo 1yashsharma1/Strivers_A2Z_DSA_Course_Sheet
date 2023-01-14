@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+int sumTillN(int n)
+{
+  // if n is 0, then return back
+  if (n == 0)
+  {
+    return 0;
+  }
+  // otherwise make next recursion call
+  // and return the sum of n and the recursive call
+  return n + sumTillN(n - 1);
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Sum of n natural numbers using recursion
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  We will check if we have reached n==0, then we will return 0
+  otherwise we will return the sum of n and the recursive call
+  i.e. return n+sumTillN(n-1);
+
+  ?METHOD 2
+
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int n;
+  cin >> n;
+  // print n to 1
+  int result = sumTillN(n);
+  cout << result;
+
+  return 0;
+}

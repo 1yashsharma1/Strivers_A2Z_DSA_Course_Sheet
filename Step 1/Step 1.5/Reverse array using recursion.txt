@@ -1,0 +1,77 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+#define ull unsigned long long
+using namespace std;
+
+void reverseArr(int n, int arr[], int start, int end)
+{
+  // if this condition is true that means the array is reversed
+  // return back to the calling function
+  if (start >= end)
+  {
+    return;
+  }
+  // otherwise swap arr[start] with arr[end]
+  // and make a recursive call for upcoming indexes
+  swap(arr[start], arr[end]);
+  reverseArr(n, arr, start + 1, end - 1);
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Reverse array using recursion
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  we will make two pointer one start and one end, we will check
+  if start>=end then it means that reversal is completed, no more
+  recursion calls return back to calling function.
+  otherwise swap the arr[start] with arr[end], and make next recursive
+  call with start+1 and end-1.
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int n;
+  cin >> n;
+  int arr[n];
+  int start = 0;
+  int end = n - 1;
+  cout << "Array before reversal" << endl;
+  for (int i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+    cout << arr[i] << " ";
+  }
+  cout << endl;
+  reverseArr(n, arr, start, end);
+  cout << "Array after reversal" << endl;
+  for (int i = 0; i < n; i++)
+  {
+    cout << arr[i] << " ";
+  }
+
+  return 0;
+}
