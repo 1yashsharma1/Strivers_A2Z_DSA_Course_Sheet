@@ -1,0 +1,84 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+#define ull unsigned long long
+using namespace std;
+
+void minmaxFreqElement(int N, int arr[])
+{
+  // initializing variables
+  int max = INT_MIN;
+  int min = INT_MAX;
+  // these will store the elements
+  int max_element = 0;
+  int min_element = 0;
+  // map will store the element along with its frequencies
+  map<int, int> m;
+  for (int i = 0; i < N; i++)
+  {
+    m[arr[i]]++;
+  }
+  // comparing the max and min with the frequency of element
+  // and updating the variables accordingly
+  for (auto i : m)
+  {
+    if (max < i.second)
+    {
+      max = i.second;
+      max_element = i.first;
+    }
+    if (min > i.second)
+    {
+      min = i.second;
+      min_element = i.first;
+    }
+  }
+  cout << "Max Occuring Element: " << max_element << "\n";
+  cout << "Min Occuring Element: " << min_element << "\n";
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Print highest and lowest frequency element in array
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  To give the min and max freq element we will be using a map
+  map will store the number of occurences of elements in lexicographical order.
+  then we will traverse and find out the element which is occuring
+  max number of times and min number of times.
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int n;
+  cin >> n;
+  int arr[n];
+  for (int i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+  }
+  minmaxFreqElement(n, arr);
+  return 0;
+}

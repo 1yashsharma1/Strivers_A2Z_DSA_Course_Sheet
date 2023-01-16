@@ -1,0 +1,73 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+#define ull unsigned long long
+using namespace std;
+
+void frequencyCount(vector<int> &arr, int N, int P)
+{
+  // declaring variables
+  int j = 0;
+  unordered_map<int, int> m;
+  // adding elements in the map, it will store the count
+  for (int i = 0; i < arr.size(); i++)
+    m[arr[i]]++;
+  // if element is not present, then replace that with 0
+  // otherwise replace that with the frequency of element
+  for (int i = 1; i <= N; i++)
+  {
+    if (m.find(i) != m.end())
+      arr[j++] = m[i];
+    else
+      arr[j++] = 0;
+  }
+}
+
+int main()
+{
+  /*
+  Ques Link:https://practice.geeksforgeeks.org/problems/frequency-of-array-elements-1587115620/0
+  Print frequencies of elements
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  we will use a map for storing the frequency of element.
+  if the element is not present in map, then we will add 0 to its place.
+  otherwise we will add the count at its place.
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int N, P;
+  cin >> N >> P;
+  vector<int> arr(N);
+  for (int i = 0; i < N; i++)
+  {
+    cin >> arr[i];
+  }
+  frequencyCount(arr, N, P);
+  for (int res : arr)
+  {
+    cout << res << " ";
+  }
+  return 0;
+}

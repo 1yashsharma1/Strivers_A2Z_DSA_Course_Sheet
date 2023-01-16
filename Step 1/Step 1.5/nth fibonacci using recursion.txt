@@ -1,0 +1,71 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+#define ull unsigned long long
+using namespace std;
+
+int nthFibonacci(int n)
+{
+  // if n==0, that means we have to return 0
+  if (n == 0)
+  {
+    return 0;
+  }
+  // if n==1, that means we have to return 1
+  if (n == 1)
+  {
+    return 1;
+  }
+  // we have to calculate the last and slast term
+  // and then return the sum of both
+  int last = nthFibonacci(n - 1);
+  int slast = nthFibonacci(n - 2);
+  return last + slast;
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  nth fibonacci using recursion
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  we will calculate the nth fibonacci term by adding the last two
+  terms. using this property we will create a recursive function
+  we know the fibonacci series as 0,1,1,2,3,5...
+  so the zeroth term is 0
+  and the first term is 1
+  whenever n == 0, we will return 0
+  and whenever n==1, we will return 1
+  and then we will return the result of slast and last term
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int n;
+  cin >> n;
+  int result = nthFibonacci(n);
+  cout << result;
+  return 0;
+}
