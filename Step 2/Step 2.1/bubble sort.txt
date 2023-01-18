@@ -1,0 +1,74 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+#define ull unsigned long long
+using namespace std;
+
+void bubbleSort(int n, int arr[])
+{
+  // the outer loop is for number of passes required
+  // for bubble sort
+  for (int i = 0; i < n - 1; i++)
+  {
+    // after each pass last i elements are at its correct
+    // place
+    for (int j = 0; j < n - i - 1; j++)
+    {
+      // comparing adjacent elements, swapping if required
+      if (arr[j] > arr[j + 1])
+      {
+        swap(arr[j], arr[j + 1]);
+      }
+    }
+  }
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Bubble Sort
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+  In bubble sort there will be n-1 passes required to sort the array.
+  we will compare adjacent element in each pass, if arr[j+1]>arr[j],
+  then we will swap the elements. after each pass the n-i-1 element
+  will be at its correct place.
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int n;
+  cin >> n;
+  int arr[n];
+  for (int i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+  }
+  bubbleSort(n, arr);
+  for (int i = 0; i < n; i++)
+  {
+    cout << arr[i] << " ";
+  }
+  return 0;
+}

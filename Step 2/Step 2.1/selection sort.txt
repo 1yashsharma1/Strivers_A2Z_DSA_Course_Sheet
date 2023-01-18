@@ -1,0 +1,79 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+#define ull unsigned long long
+using namespace std;
+
+void selectionSort(int n, int arr[])
+{
+  int min_ind;
+  // considering starting index has smallest element
+  for (int i = 0; i < n - 1; i++)
+  {
+    min_ind = i;
+    // if any left in rest subarray is smaller than min_ind element
+    // then we will update the min_ind with the smaller one
+    for (int j = i + 1; j < n; j++)
+    {
+      if (arr[min_ind] > arr[j])
+      {
+        min_ind = j;
+      }
+    }
+    // after comparing with all the elements we will
+    // swap it with the smallest one
+    if (min_ind != i)
+    {
+      swap(arr[min_ind], arr[i]);
+    }
+  }
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Selection Sort
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+  in selection sort we will take an element and compare
+  it with all rest of subarray and we will swap it with the smallest
+  element present in the subarray.
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int n;
+  cin >> n;
+  int arr[n];
+  for (int i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+  }
+  selectionSort(n, arr);
+  for (int i = 0; i < n; i++)
+  {
+    cout << arr[i] << " ";
+  }
+  return 0;
+}
