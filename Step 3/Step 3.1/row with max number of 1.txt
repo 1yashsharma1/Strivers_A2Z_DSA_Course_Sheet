@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+int rowWithMax1s(vector<vector<int>> arr, int n, int m)
+{
+  int rowNo = -1;
+  int maxOne = 0;
+
+  for (int i = 0; i < n; i++)
+  {
+    int tempcount = 0;
+    // we will traverse every row and store the number of 1 in
+    // tempcount variable
+    for (int j = 0; j < m; j++)
+    {
+      if (arr[i][j] == 1)
+      {
+        tempcount++;
+      }
+    }
+    // the maxOne variable will store the maximum number of 1 in a row
+    // rowNo will store the number of row which has maximum number of 1
+    // both these will be updated if any row has more number of 1 than prev
+    if (tempcount > maxOne)
+    {
+      maxOne = tempcount;
+      rowNo = i;
+    }
+  }
+  return rowNo;
+}
+
+int main()
+{
+  /*
+    find row with maximum number of 1
+  */
+
+  // Remove the whole #ifndef part before submitting
+
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  /*
+
+  ?METHOD 1
+
+  we will traverse each row and store count of 1 in a temp variable.
+  if the count of temp variable is greater than maxcount, then we will
+  update the maxcount and we will store the rownumber in variable.
+  after traversal of matrix we will return the rownumber with maximum 1
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+  int n, m;
+  cin >> n >> m;
+  vector<vector<int>> arr(n, vector<int>(m));
+  for (int j = 0; j < n; j++)
+  {
+    for (int i = 0; i < m; i++)
+    {
+      cin >> arr[j][i];
+    }
+  }
+  int res = rowWithMax1s(arr, n, m);
+  cout << res;
+  return 0;
+}

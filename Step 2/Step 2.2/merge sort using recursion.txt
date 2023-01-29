@@ -1,0 +1,140 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+void mergeArr(int arr[], int start, int end)
+{
+  // here we will create two temp arrays and will copy both
+  // of the halves of array into those arrays
+
+  // calculating mid
+  int mid = start + (end - start) / 2;
+  // calculating length of both the temp arrays
+  int len1 = mid - start + 1;
+  int len2 = end - mid;
+
+  // initializing both temp arrays
+  int arr1[len1] = {0};
+  int arr2[len2] = {0};
+
+  // initializing the start index of the main array to copy
+  // data of the first half of array into first temp array
+  int s = start;
+  for (int i = 0; i <= mid; i++)
+  {
+    arr1[i] = arr[s++];
+  }
+  // re-initializing the start index of the main array to copy
+  // data of the second half of array into second temp array
+  s = mid + 1;
+  for (int i = 0; i < len2; i++)
+  {
+    arr2[i] = arr[s++];
+  }
+
+  int a1 = 0, a2 = 0;
+  int mainIndex = start;
+
+  // merging both the arrays in a sorted manner
+  while (a1 < len1 && a2 < len2)
+  {
+    if (arr1[a1] < arr2[a2])
+    {
+      arr[mainIndex++] = arr1[a1++];
+    }
+    else
+    {
+      arr[mainIndex++] = arr2[a2++];
+    }
+  }
+
+  while (a1 < len1)
+  {
+    arr[mainIndex++] = arr1[a1++];
+  }
+
+  while (a2 < len2)
+  {
+    arr[mainIndex++] = arr2[a2++];
+  }
+}
+
+void mergeSort(int arr[], int start, int end)
+{
+
+  // if start > end then we have to return
+  if (start >= end)
+  {
+    return;
+  }
+  // before every call we have to calculate mid
+  int mid = start + (end - start) / 2;
+
+  // recursive call for first half of the array
+  mergeSort(arr, start, mid);
+  // recursive call for the second half of the array
+  mergeSort(arr, mid + 1, end);
+  // this will merge both the sorted arrays
+  mergeArr(arr, start, end);
+}
+
+int main()
+{
+  /*
+  Ques Link:
+
+  merge sort using recursion with extra space
+
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  merge sort keeps on dividing the arrays into two parts until
+  single single element is left on both right and left part.
+  after doing this the merge function is called this function
+  creates two temp arrays for both right and left halves of array
+  and it merges both the arrays in the resultant array in sorted manner.
+
+  Time complexity:- O( n * log (n) )
+  Space complexity:- O(n)
+
+  n=size of array
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // Declaring Variables, Taking inputs
+  int n;
+  cin >> n;
+  int arr[n];
+  for (int i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+  }
+
+  mergeSort(arr, 0, n - 1);
+  for (int res : arr)
+  {
+    cout << res << " ";
+  }
+
+  return 0;
+}

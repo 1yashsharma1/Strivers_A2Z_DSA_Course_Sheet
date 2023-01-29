@@ -1,0 +1,87 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+int findMaxConsecutiveOnes(vector<int> &nums)
+{
+  int maxOnes = 0;
+  int tempCount = 0;
+  // tempCount will store the number of consecutive ones
+  for (int i = 0; i < nums.size(); i++)
+  {
+    // if number is 1 then we will increase tempCount, and continue
+    // traversing from next element
+    if (nums[i] == 1)
+    {
+      tempCount++;
+      continue;
+    }
+    // if number is not 1 then we will compare then tempCount value
+    // with the maxOnes value, if tempCount value is greater than
+    // maxOnes value then we will update maxOnes with tempCount
+    if (nums[i] != 1)
+    {
+      if (tempCount > maxOnes)
+      {
+        maxOnes = tempCount;
+      }
+      tempCount = 0;
+      continue;
+    }
+  }
+  // if maximum consecutive ones is in the end, then in the end
+  // we will again check for that, if tempcount>maxones
+  //  then return tempCount
+  if (tempCount > 0 && tempCount > maxOnes)
+  {
+    return tempCount;
+  }
+  return maxOnes;
+}
+
+int main()
+{
+  /*
+    max consecutives one
+  */
+
+  // Remove the whole #ifndef part before submitting
+
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  /*
+
+  ?METHOD 1
+
+  we will traverse store consecutive count of 1 in a temp variable.
+  if the count of temp variable is greater than maxOnes, then we will
+  update the maxOnes.
+  after traversal of array we will if maximum consecutive ones is in the end, then in the end
+  we will again check for that, if tempcount>maxones then return tempCount
+  otherwise return maxOnes
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+  int n;
+  cin >> n;
+  vector<int> nums(n);
+  for (int i = 0; i < n; i++)
+  {
+    cin >> nums[i];
+  }
+  int res = findMaxConsecutiveOnes(nums);
+  cout << res;
+  return 0;
+}

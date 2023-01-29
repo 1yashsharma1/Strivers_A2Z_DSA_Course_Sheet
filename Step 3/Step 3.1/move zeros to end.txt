@@ -1,0 +1,67 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+void moveZeroesToEnd(vector<int> &nums)
+{
+  int pos = 0;
+  // if element is a non-zero element move it to start
+  for (int res : nums)
+  {
+    if (res != 0)
+      nums[pos++] = res;
+  }
+  // after all non-zero elements are copied
+  // start copying the zeroes till end
+  for (pos; pos < nums.size(); pos++)
+  {
+    nums[pos] = 0;
+  }
+}
+
+int main()
+{
+  /*
+    Move zeros to end of array (order of non-zero elements should be preserved)
+  */
+
+  // Remove the whole #ifndef part before submitting
+
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  /*
+
+  ?METHOD 1
+
+  we will copy all the non-zero elements from the starting of array
+  we will store the index of non-zero elements and update it every time
+  an element gets updated, and from that index we will start inserting
+  0 in the array to the end
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+  int n;
+  cin >> n;
+  vector<int> nums(n);
+  for (int j = 0; j < n; j++)
+  {
+    cin >> nums[j];
+  }
+  moveZeroesToEnd(nums);
+  for (int res : nums)
+  {
+    cout << res << " ";
+  }
+  return 0;
+}

@@ -1,0 +1,89 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+#define ull unsigned long long
+using namespace std;
+
+pair<int, int> largestElement(int n, int arr[])
+{
+  // intializing max with int_min to handle negative elements
+  int max = INT_MIN;
+  int smax = INT_MIN;
+  // update max whenever element is greater than the current_max
+  for (int i = 0; i < n; i++)
+  {
+    // if element is greater than max, first update smax=max
+    if (arr[i] > max)
+    {
+      smax = max;
+      max = arr[i];
+    }
+    // if there is any element which is just greater than smax
+    // not greater than max then we will update smax only
+    if (arr[i] > smax && arr[i] < max)
+    {
+      smax = arr[i];
+    }
+  }
+  // return max and smax in the end
+  pair<int, int> max_smax;
+  // if no smax exists then update smax=-1
+  max_smax.first = max;
+  if (smax == INT_MIN)
+    max_smax.second = -1;
+  else
+    max_smax.second = smax;
+  return max_smax;
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  second largest element in array without sorting
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  initialize max,smax with INT_MIN, if arr[i]> max then we will update
+  smax=max and max=arr[i]. if any element is greater than smax and less
+  than max, then we will just update smax.
+  after traversing whole array if smax==INT_MIN, that means
+  either all elements are same or there is no smax in array
+  we will update the smax=-1.
+  Then we will return the max,smax.
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int n;
+  cin >> n;
+  int arr[n];
+  for (int i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+  }
+  pair<int, int> max_smax = largestElement(n, arr);
+  cout << "max: " << max_smax.first << endl;
+  cout << "smax: " << max_smax.second << endl;
+  return 0;
+}

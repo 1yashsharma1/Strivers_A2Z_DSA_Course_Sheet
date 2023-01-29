@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+void rotate(vector<int> &nums, int k)
+{
+  // temp vector to store the rotated array
+  vector<int> temp(nums.size());
+  // putting k in range [0,nums.size()]
+  int rot = k % nums.size();
+  // calculating the index from which we have to copy the nums array
+  int ptr = nums.size() - rot;
+  int pos = 0;
+  // copying nums in the temp array
+  for (int i = ptr; i < nums.size(); i++)
+  {
+    temp[pos++] = nums[i];
+  }
+  // since the next half of nums is copied, it is time to copy the
+  // previous half of the array
+  for (int i = 0; i < ptr; i++)
+  {
+    temp[pos++] = nums[i];
+  }
+  // copying the temp to original array
+  nums = temp;
+  temp.clear();
+}
+
+int main()
+{
+  /*
+    Left rotate an array by k times
+  */
+
+  // Remove the whole #ifndef part before submitting
+
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  /*
+
+  ?METHOD 1
+
+  first we will put k in the [0,nums.size()] range, since an array can
+  be rotated only n times. after this we will calculate the pos from
+  which the array is rotated, we will copy from that range till n, into
+  another array. after doing this we will start copying from 0 to first rotated index
+  in the temp array.
+  then we will copy this temp array into orginal array
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+  int n, k;
+  cin >> n >> k;
+  vector<int> nums(n);
+  for (int j = 0; j < n; j++)
+  {
+    cin >> nums[j];
+  }
+  rotate(nums, k);
+  for (int res : nums)
+  {
+    cout << res << " ";
+  }
+  return 0;
+}

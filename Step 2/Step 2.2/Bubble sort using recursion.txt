@@ -1,0 +1,92 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+void bubbleSort(int start, int end, int arr[])
+{
+  int count = 0; // this counter will keep the track of swapping
+                 // if count==0, that means array is sorted :- return back
+
+  if (end > 0) // make a recursive call until end reaches to zero
+  {
+    // this for loop runs a PASS of bubble sort
+    // count stores the count of swapping
+    for (int i = start; i < end - 1; i++)
+    {
+      if (arr[i] > arr[i + 1])
+      {
+        swap(arr[i], arr[i + 1]);
+        count++;
+      }
+    }
+  }
+  // if count==0, array is sorted we have to return back to
+  // previous calls
+  if (count == 0)
+  {
+    return;
+  }
+  // if count is not zero, then recursively call the next bubble sort pass
+  bubbleSort(start, end - 1, arr);
+}
+
+int main()
+{
+  /*
+  Ques Link:
+
+  Bubble sort using recursion
+
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+  For every pass we will make a recursive call, after every call
+  we will decrease the end index by 1, because in bubble sort
+  after every pass the highest element gets its place at last index.
+  if end>0 and counter>0 then we will do a recursive call. 
+  we will also maintain a counter which will keep count
+  whenever swapping occurs.
+  for e.g. if in i'th pass counter value is 0, that means there is
+  no swapping made. That means the array is sorted, we don't need
+  to make further recursive calls, so we will return back if count
+  is zero at any point of time.
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // Declaring Variables, Taking inputs
+  int n;
+  cin >> n;
+  int arr[n]; // input array
+  for (int i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+  }
+
+  bubbleSort(0, n, arr);
+  // to print the sorted array
+  for (int res : arr)
+  {
+    cout << res << " ";
+  }
+
+  return 0;
+}

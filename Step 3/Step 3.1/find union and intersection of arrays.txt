@@ -1,0 +1,118 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+vector<int> findIntersection(int arr1[], int arr2[], int n, int m)
+{
+  unordered_set<int> s;
+  vector<int> v;
+  // we will insert array1 in set
+  for (int i = 0; i < n; i++)
+  {
+    s.insert(arr1[i]);
+  }
+  // then we will check if array2 element is present in set
+  for (int i = 0; i < m; i++)
+  {
+    // if element is present then we will add the element in the
+    // result vector and remove it from set to avoid duplicates
+    // before returning result vector we will sort it
+    if (s.find(arr2[i]) != s.end())
+    {
+      v.push_back(arr2[i]);
+      s.erase(arr2[i]);
+    }
+  }
+  sort(v.begin(), v.end());
+  return v;
+}
+
+vector<int> findUnion(int arr1[], int arr2[], int n, int m)
+{
+  unordered_set<int> res;
+  // inserting both arrays in set
+  for (int i = 0; i < n; i++)
+  {
+    res.insert(arr1[i]);
+  }
+  for (int i = 0; i < m; i++)
+  {
+    res.insert(arr2[i]);
+  }
+  // now set has union so before returning we will copy it to
+  // vector and sort the vector and then return it
+  vector<int> result(res.begin(), res.end());
+  sort(result.begin(), result.end());
+  return result;
+}
+
+int main()
+{
+  /*
+    find union and intersection of two arrays
+  */
+
+  // Remove the whole #ifndef part before submitting
+
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  /*
+
+  ?METHOD 1
+
+  Union: we will add both the arrays in a un_ordered set, this will only store
+  the unique elements from both the arrays. Before returning we will
+  copy this un_ordered set into a vector. we will first sort the vector and
+  then we will return it.
+
+  Intersection: we will insert one of the arrays inside a un_ordered set. Then we
+  will traverse other array and will check if element of 2nd array is present
+  inside the set. If element is present then we will add that element in
+  result vector and remove that element from the set, removing element
+  from the set will ensure that duplicates from 2nd array are not inserted.
+
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // inputs
+  int n, m;
+  cin >> n >> m;
+  int arr1[n];
+  int arr2[m];
+  for (int i = 0; i < n; i++)
+  {
+    cin >> arr1[i];
+  }
+  for (int i = 0; i < m; i++)
+  {
+    cin >> arr2[i];
+  }
+
+  // union of two arrays
+  vector<int> unionResult = findUnion(arr1, arr2, n, m);
+  for (int res : unionResult)
+  {
+    cout << res << " ";
+  }
+  cout << endl;
+  // intersection of two arrays
+  vector<int> intersectionResult = findIntersection(arr1, arr2, n, m);
+  for (int res : intersectionResult)
+  {
+    cout << res << " ";
+  }
+  return 0;
+}

@@ -1,0 +1,69 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+#define ull unsigned long long
+using namespace std;
+
+int largestElement(int n, int arr[])
+{
+  // intializing max with int_min to handle negative elements
+  int max = INT_MIN;
+  // update max whenever element is greater than the current_max
+  for (int i = 0; i < n; i++)
+  {
+    if (arr[i] > max)
+    {
+      max = arr[i];
+    }
+  }
+  // return max in the end
+  return max;
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Largest Element in an Array
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  initialize max with INT_MIN, if arr[i]> max then we will update
+  max with arr[i]. we will traverse the whole array in the same
+  manner and update max whenever the element is greater than max
+  and return max in the end;
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int n;
+  cin >> n;
+  int arr[n];
+  for (int i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+  }
+  int largest = largestElement(n, arr);
+  cout << largest;
+  return 0;
+}

@@ -1,0 +1,71 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+#define ull unsigned long long
+using namespace std;
+
+string isSortedArray(int n, int arr[])
+{
+  // if previous element > next element, that means
+  // array is not sorted, return false
+  for (int i = 1; i < n; i++)
+  {
+    if (arr[i - 1] > arr[i])
+    {
+      return "false";
+    }
+  }
+  // whole array is traversed that means array is sorted
+  // return true
+  return "true";
+}
+
+int main()
+{
+  /*
+  Ques Link:
+  Check if array is sorted in ascending order
+  */
+
+  /*
+  *Methods and Reference Questions
+
+  ?METHOD 1
+
+  we will compare the arr[i-1] element with arr[i] element.
+  if at any value of i, arr[i-1]>arr[i], that means the array is
+  not sorted, return false;
+  if we suceessfully traverse the array that means array is
+  sorted we will return true;
+
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  // Remove the whole #ifndef part before submitting
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  // inputs
+  int n;
+  cin >> n;
+  int arr[n];
+  for (int i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+  }
+  string isSorted = isSortedArray(n, arr);
+  cout << isSorted;
+  return 0;
+}
