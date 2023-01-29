@@ -1,0 +1,104 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+bool searchMatrix(vector<vector<int>> &matrix, int target)
+{
+  // setting up variables
+  // here (mid/col)=row and (mid%col)=col
+  int row = matrix.size();
+  int col = matrix[0].size();
+  int start = 0;
+  int end = row * col - 1;
+  int mid = start + (end - start) / 2;
+
+  while (start <= end)
+  {
+    // if value is less than target, search the next half
+    if (matrix[mid / col][mid % col] < target)
+    {
+      start = mid + 1;
+    }
+    // if value is greater than target, search the prev half
+    if (matrix[mid / col][mid % col] > target)
+    {
+      end = mid - 1;
+    }
+    // if value is same as target return true
+    if (matrix[mid / col][mid % col] == target)
+    {
+      return true;
+    }
+    // update the mid after each iteration
+    mid = start + (end - start) / 2;
+  }
+  // if not found return false
+  return false;
+}
+
+int main()
+{
+  /*
+  Ques Link: https://leetcode.com/problems/search-a-2d-matrix/description/
+
+  Binary Search on Matrix(2-D array) leetcode 74
+
+  */
+
+  // Remove the whole #ifndef part before submitting
+
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  //
+
+  /*
+
+  ?METHOD 1
+
+ Perform the Binary Search on the matrix we have to suppose it
+ as a 1d elongated array.
+ here start=0, end=row*col-1, mid=start+(end-start)/2,
+ row=mid/col, col=mid%col
+  while(start<=end)
+  {
+  if(value<target) then start=mid+1
+  if(value>target) then end=mid-1
+  if(value==target) then return true
+  mid=start+(end-start)/2
+                                    }
+  return false
+
+
+  ?METHOD 2
+
+  Reference Ques:
+  */
+
+  int row, col, target;
+  cin >> row >> col >> target;
+  vector<vector<int>> matrix;
+  for (int i = 0; i < row; i++)
+  {
+    vector<int> temp;
+    for (int j = 0; j < col; j++)
+    {
+      int num;
+      cin >> num;
+      temp.push_back(num);
+    }
+    matrix.push_back(temp);
+  }
+  bool result = searchMatrix(matrix, target);
+  cout << result;
+
+  return 0;
+}
