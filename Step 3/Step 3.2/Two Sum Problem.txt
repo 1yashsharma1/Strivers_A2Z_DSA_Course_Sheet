@@ -1,0 +1,75 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+vector<int> twoSum(vector<int> &nums, int target)
+{
+  // map to store the index-value pair
+  // result will store the indexes of result
+  unordered_map<int, int> m;
+  vector<int> result(2);
+  for (int i = 0; i < nums.size(); i++)
+  {
+    m[nums[i]] = i;
+  }
+  for (int i = 0; i < nums.size(); i++)
+  {
+    int temp = target - nums[i];
+    // if target-nums[i] is present and both the index are unique
+    // we will add both the indexes to result
+    if (m.find(temp) != m.end() && i != m[temp])
+    {
+      result[0] = min(i, m[temp]);
+      result[1] = max(i, m[temp]);
+      break;
+    }
+  }
+  return result;
+}
+
+int main()
+{
+  /*
+    Two Sum problem
+  */
+
+  // Remove the whole #ifndef part before submitting
+
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  /*
+
+  ?METHOD 1
+
+  we will use hashmap which will store the index and its value
+  then we will search target-nums[i] in the hashmap. If it is present
+  then we will return i and the index where it is found.
+
+
+  ?METHOD 2
+
+
+  Reference Ques:
+  */
+
+  // inputs
+  int n, target;
+  cin >> n >> target;
+  vector<int> nums(n);
+  for (int i = 0; i < n; i++)
+  {
+    cin >> nums[i];
+  }
+  vector<int> result = twoSum(nums, target);
+  cout << result[0] << " " << result[1];
+  return 0;
+}
