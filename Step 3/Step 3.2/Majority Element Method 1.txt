@@ -1,0 +1,85 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+int majorityElement(vector<int> &nums)
+{
+  // It is guaranteed there is a element which occures maximum
+  // times we have to find that element
+  int max = 0;
+  unordered_map<int, int> m;
+  // we will store the occurance of elements in the hashmap
+  for (int i = 0; i < nums.size(); i++)
+  {
+    m[nums[i]]++;
+  }
+  // then we will find the max number of occurance of any element
+  for (int i = 0; i < nums.size(); i++)
+  {
+    if (m[nums[i]] > max)
+    {
+      max = m[nums[i]];
+    }
+  }
+  // we will search for that number of occurance in map and we
+  // will return the corresponding element
+  for (auto it : m)
+  {
+    if (it.second == max)
+    {
+      return it.first;
+    }
+  }
+  return 0;
+}
+
+int main()
+{
+  /*
+    Majority element (number appearing more than n/2 times)
+      Method 1
+  */
+
+  // Remove the whole #ifndef part before submitting
+
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  /*
+
+  ?METHOD 1
+
+  we will use hashmap for finding the element which is appearing more
+  than n/2 times in the array. we will store the count of every element
+  in the hashmap then we will traverse the hashmap to find maximum time
+  an element has occured then we will search for that element occurance
+  in the hashmap and will return the number mapped to that occurance.
+
+
+  ?METHOD 2
+
+
+  Reference Ques:
+  */
+
+  // inputs
+  int n;
+  cin >> n;
+  vector<int> nums(n);
+  for (int i = 0; i < n; i++)
+  {
+    cin >> nums[i];
+  }
+  int res = majorityElement(nums);
+  cout << res;
+
+  return 0;
+}

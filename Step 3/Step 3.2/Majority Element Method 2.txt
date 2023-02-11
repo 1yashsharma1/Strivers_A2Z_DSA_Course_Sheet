@@ -1,0 +1,82 @@
+#include <bits/stdc++.h>
+#define mod 100000007
+using namespace std;
+
+int majorityElement(vector<int> &nums)
+{
+  // cnt stores the count of element
+  // element stores the element which we are counting
+  int cnt = 0, element = 0;
+  for (int res : nums)
+  {
+    // if count of element is 0, we will intialize the element variable
+    // with the array element
+    if (cnt == 0)
+      element = res;
+    // if the element and array element which we are traversing
+    // is same then we will increase the count
+    if (element == res)
+      cnt += 1;
+    // if the element is different than the traversing array element
+    // then we will decrease the count
+    else
+      cnt -= 1;
+  }
+  // In the end element variable will point to that element
+  // whose count is greater than n/2
+  return element;
+}
+
+int main()
+{
+  /*
+    Majority element (number appearing more than n/2 times)
+      Method 2
+  */
+
+  // Remove the whole #ifndef part before submitting
+
+#ifndef ONLINE_JUDGE
+
+  // For getting input from input.txt file
+  freopen("input.txt", "r", stdin);
+  // Printing the Output to output.txt file
+  freopen("output.txt", "w", stdout);
+#endif
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  /*
+
+  ?METHOD 1
+
+  we will use moore's voting algorithm for this question.
+  we can say that count of minority elements and majority elements
+  are equal up to a certain point of time in the array.
+  So when we traverse through the array we
+  try to keep track of the count of elements and which element
+  we are tracking. Since the majority element appears more
+  than N/2 times, we can say that at some point in array traversal
+  we find the majority element
+
+
+  ?METHOD 2
+
+
+  Reference Ques:
+  */
+
+  // inputs
+  int n;
+  cin >> n;
+  vector<int> nums(n);
+  for (int i = 0; i < n; i++)
+  {
+    cin >> nums[i];
+  }
+  int res = majorityElement(nums);
+  cout << res;
+
+  return 0;
+}
